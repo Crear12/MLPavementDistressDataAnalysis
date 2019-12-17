@@ -11,7 +11,7 @@ https://infopave.fhwa.dot.gov/Data/DataSelection
 ## Data Resolution
 At 1 year interval.
 
-##Code Environment
+## Code Environment
 IDE: Python Jupyter Notebook.
 Modules: Pandas,Numpy,Sklearn,Matplotlib,tqdm
 
@@ -20,11 +20,16 @@ SHRP_ID, STATE_CODE, YEAR, SURVEY_DATE, HPMS16_CRARKING_PERCENT_JPCC, MEAN_ANN_ 
 
 ## Merging Logic
 Firstly, the humidity and temperature data are merged by 'SHRP_ID', 'STATE_CODE', 'YEAR', 'VWS_ID'. Secondly, merge it with cracking data and traffic data by 'SHRP_ID', 'STATE_CODE', 'YEAR' one by one. At last, merge it with construction data by 'SHRP_ID', 'STATE_CODE', 'CONSTRUCTION_NO'. Considering that the target is JPCC cracking percentage, only the concrete construction data were kept.
+
 'SHRP_ID' is test section identification number assigned by LTPP program. Must be combined with STATE_CODE to be unique.
 'STATE_CODE' is numerical code for state or province. U.S. codes are consistent with Federal Information Processing Standards.
+
 'VWS_ID' is code that uniquely identifies virtual weather station.
+
 'YEAR' is the by year temporal information of the data. The cracking data provides ‘SURVEY_DATE’ rather than ‘YEAR’. To match it with other data, the date information has to be transformed into year.
+
 'CONSTRUCTION_NO' is event number used to relate changes in pavement structure with other time dependent data elements. This field is set to 1 when a test section is initially accepted into LTPP and is incremented with each change to the layer structure.
+
 The principle for data merging is to find the unique columns as indices. The indices chosen in this project are time and location.
 
 # Machine Learning
